@@ -1,0 +1,59 @@
+<div class="min-h-screen bg-light d-flex align-items-center justify-content-center">
+  <div class="card shadow-lg p-5 w-100" style="max-width: 450px; border-radius: 1rem;">
+    <h2 class="text-center mb-4 fw-bold text-dark">Create an Account</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <!-- Username -->
+      <div class="mb-3">
+        <label for="username" class="form-label fw-semibold">Username</label>
+        <input
+          id="username"
+          type="text"
+          formControlName="username"
+          class="form-control shadow-sm"
+          placeholder="Enter your username"
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="mb-3">
+        <label for="password" class="form-label fw-semibold">Password</label>
+        <input
+          id="password"
+          type="password"
+          formControlName="password"
+          class="form-control shadow-sm"
+          placeholder="******************"
+        />
+      </div>
+
+      <!-- Error Message -->
+      @if(errorMessage){
+        <div class="alert alert-danger py-2 mb-3" role="alert">
+          {{ errorMessage }}
+        </div>
+      }
+
+      <!-- Submit Button -->
+      <div class="d-grid mb-3">
+        <button
+          type="submit"
+          [disabled]="loginForm.invalid"
+          class="btn btn-success btn-lg fw-bold"
+        >
+          Register
+        </button>
+      </div>
+
+      <!-- Back to Login Link -->
+      <div class="text-center mt-3">
+        <a
+          routerLink="/login"
+          class="fw-semibold text-gray-700 hover:text-emerald-600 hover:underline cursor-pointer transition duration-300"
+        >
+          Already have an account? Sign In
+        </a>
+      </div>
+    </form>
+  </div>
+</div>
